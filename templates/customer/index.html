@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Customer{% endblock %}</h1>
+    <p class="about" id="no_of_cust">Found : {{ customers|length }}</p> &nbsp;&nbsp;
+    {% if g.user %}
+    <input type="text" id="search_txt" name="search_txt"/>
+    <a class="action" href="{{ url_for('cust.create') }}">New</a>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+  <div id="content_data" name="content_data">
+    {% for customer in customers %}
+        <article class="post">
+            <header>
+                <div>
+                    <h1>{{ customer['firstName'] + ' ' + customer['lastName'] }}</h1>
+                    <div class="about">Age {{ customer['age'] }}</div>
+                </div>
+            </header>
+            <p class="body">{{ customer['email'] }}</p>
+        </article>
+        {% if not loop.last %}
+        <hr>
+        {% endif %}
+    {% endfor %}
+  </div>
+{% endblock %}

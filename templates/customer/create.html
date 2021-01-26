@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New Customer{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="firstName">Firstname</label>
+    <input name="firstName" id="firstName" value="{{ request.form['firstName'] }}" required>
+    <label for="lastName">Lastname</label>
+    <input name="lastName" id="lastName" value="{{ request.form['lastName'] }}" required>
+    <label for="age">Age</label>
+    <input name="age" id="age" value="{{ request.form['age'] }}" required>
+    <label for="email">Email</label>
+    <input name="email" id="email" value="{{ request.form['email'] }}" required>
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}
